@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Text, StyleSheet, View, BackHandler, Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import MainScreen from "./MainScreen";
 import ProfileScreen from "./ProfileScreen";
@@ -10,7 +10,60 @@ import EditProfileScreen from "./EditProfileScreen";
 import ShareAppScreen from "./ShareAppScreen";
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === "Main") {
+            iconName = focused ? "ios-home" : "ios-home-outline";
+          } else if (route.name === "Profile") {
+            iconName = focused ? "person-circle" : "person-circle-outline";
+          }
+
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: "#fff",
+        tabBarInactiveTintColor: "gray",
+        tabBarStyle: {
+          height: 90,
+          paddingHorizontal: 5,
+          backgroundColor: "#E8907D",
+          borderRadius: 35,
+          position: "absolute",
+          borderTopWidth: 0,
+        },
+      })}
+    >
+      <Tab.Screen
+        name="Main"
+        component={MainScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown: false }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator screenOptions={{ headerShown: false }}>
+      <Drawer.Screen name="Main" component={MyTabs} />
+      <Drawer.Screen name="EditProfileScreen" component={EditProfileScreen} />
+      <Drawer.Screen name="ShareAppScreen" component={ShareAppScreen} />
+    </Drawer.Navigator>
+  );
+}
 
 export default function HomeScreen({ navigation }) {
   useEffect(() => {
@@ -36,44 +89,7 @@ export default function HomeScreen({ navigation }) {
   }, []);
   return (
     <NavigationContainer independent={true}>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === "Main") {
-              iconName = focused ? "ios-home" : "ios-home-outline";
-            } else if (route.name === "Profile") {
-              iconName = focused ? "person-circle" : "person-circle-outline";
-            }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarShowLabel: false,
-          tabBarActiveTintColor: "#fff",
-          tabBarInactiveTintColor: "gray",
-          tabBarStyle: {
-            height: 90,
-            paddingHorizontal: 5,
-            backgroundColor: "#E8907D",
-            borderRadius: 35,
-            position: "absolute",
-            borderTopWidth: 0,
-          },
-        })}
-      >
-        <Tab.Screen
-          name="Main"
-          component={MainScreen}
-          options={{ headerShown: false }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{ headerShown: false }}
-        />
-      </Tab.Navigator>
+      <MyDrawer />
     </NavigationContainer>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-export default function MainHeader() {
+export default function MainHeader({ navigation }) {
   return (
     <View style={styles.container}>
       <View
@@ -12,12 +12,14 @@ export default function MainHeader() {
           justifyContent: "flex-start",
           alignItems: "flex-end",
           position: "relative",
-          top: 40
+          top: 40,
         }}
       >
-        <MaterialIcons name="segment" size={32} color="#E8907D" />
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <MaterialIcons name="segment" size={32} color="#E8907D" />
+        </TouchableOpacity>
       </View>
-      <View style={{ position: "relative", top: 70, height: 90, }}>
+      <View style={{ position: "relative", top: 70, height: 90 }}>
         <Text style={{ fontSize: 24, fontWeight: "800", color: "#fff" }}>
           Hi, Popoola Omotolani
         </Text>

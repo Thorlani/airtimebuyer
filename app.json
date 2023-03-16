@@ -18,7 +18,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#BD84D8"
+        "backgroundColor": "#fff"
       },
       "package": "com.thorlani.AirTimeBuyer"
     },
