@@ -2,39 +2,15 @@ import React, { useEffect } from "react";
 import { Text, StyleSheet, View, BackHandler, Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
-
-function MainScreen() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#EAD9EB",
-      }}
-    >
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#EAD9EB",
-      }}
-    >
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+import MainScreen from "./MainScreen";
+import ProfileScreen from "./ProfileScreen";
+import EditProfileScreen from "./EditProfileScreen";
+import ShareAppScreen from "./ShareAppScreen";
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function HomeScreen({ navigation }) {
   useEffect(() => {
@@ -74,12 +50,12 @@ export default function HomeScreen({ navigation }) {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "#8C52FF",
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: "#fff",
           tabBarInactiveTintColor: "gray",
           tabBarStyle: {
             height: 90,
             paddingHorizontal: 5,
-            paddingBottom: 10,
             backgroundColor: "#E8907D",
             borderRadius: 35,
             position: "absolute",

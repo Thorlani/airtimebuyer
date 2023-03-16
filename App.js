@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import "expo-dev-client";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import IntroScreen from "./screens/Intro";
+import IntroScreen from "./screens/IntroScreen";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import OnboardingScreen from "./screens/onboarding";
+import OnboardingScreen from "./screens/OnboardingScreen";
 
 const Stack = createNativeStackNavigator();
 
