@@ -1,4 +1,4 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 
@@ -14,9 +14,9 @@ export default function ProfileList({ navigation }) {
           height: 80,
           padding: 25,
           borderRadius: 20,
-          marginBottom: 15,
+          marginVertical: 15,
         }}
-        onPress={() => navigation.navigate("EditProfileScreen")}
+        onPress={() => navigation.navigate("Edit Profile")}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View>
@@ -41,11 +41,11 @@ export default function ProfileList({ navigation }) {
           borderRadius: 20,
           marginBottom: 15,
         }}
-        onPress={() => navigation.navigate("ShareAppScreen")}
+        onPress={() => navigation.navigate("Share App")}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View>
-            <MaterialIcons name="share" size={24} color="#fff" />
+          <Ionicons name="share-social-outline" size={24} color="#fff" />
           </View>
           <View style={{ marginHorizontal: 10 }}>
             <Text style={{ color: "#fff", fontSize: 16 }}>

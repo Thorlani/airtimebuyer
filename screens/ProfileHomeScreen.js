@@ -3,7 +3,8 @@ import { Text, StyleSheet, View } from "react-native";
 import ProfileList from "../components/ProfileList";
 import ProfileHeader from "../components/ProfileHeader";
 
-export default function ProfileHomeScreen({ navigation }) {
+export default function ProfileHomeScreen({ navigation, route }) {
+  const showBack = route.params;
   return (
     <View
       style={{
@@ -13,7 +14,7 @@ export default function ProfileHomeScreen({ navigation }) {
         backgroundColor: "#EAD9EB",
       }}
     >
-      <ProfileHeader />
+      <ProfileHeader navigation={navigation} route={showBack} />
       <ProfileList navigation={navigation} />
     </View>
   );

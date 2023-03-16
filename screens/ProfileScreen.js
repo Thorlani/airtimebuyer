@@ -7,22 +7,24 @@ import EditProfileScreen from "./EditProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ route }) {
+  const showBack = route.params;
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
         <Stack.Screen
-          name="ProfileHomeScreen"
+          name="Profile"
           component={ProfileHomeScreen}
           options={{ headerShown: false }}
+          initialParams={{ param: showBack.param }}
         />
         <Stack.Screen
-          name="EditProfileScreen"
+          name="Edit Profile"
           component={EditProfileScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="ShareAppScreen"
+          name="Share App"
           component={ShareAppScreen}
           options={{ headerShown: false }}
         />

@@ -10,8 +10,6 @@ import {
 } from "react-native";
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import Authenticate from "../redux/AuthAction";
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
